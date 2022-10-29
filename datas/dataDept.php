@@ -9,6 +9,10 @@ $data_dept = $model->dataDepartemen();
             <h2>Daftar Departemen</h2>
         </div>
 
+        <a class="btn btn-sm text-white mb-3" style="background-color: #5cb874;" href="index.php?hal=forms/departemen">
+            Tambah <i class="bi bi-plus-lg fs-7"></i>
+        </a>
+
         <div class="row justify-content-center">
             <div class="col-7">
                 <table class="table table-sm table-striped">

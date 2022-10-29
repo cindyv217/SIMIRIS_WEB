@@ -2,7 +2,7 @@
 $obj_asal = new Asal();
 $obj_pet = new Petugas();
 $data_asal = $obj_asal->dataAsal();
-$data_pet = $obj_pet->dataPet();
+$data_pet = $obj_pet->dataPetugas();
 ?>
 <section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">
     <div class="row justify-content-center">

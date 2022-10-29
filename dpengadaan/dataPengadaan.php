@@ -1,5 +1,5 @@
 <?php
-$model = new Inventaris();
+$model = new Pengadaan();
 $data_pda = $model->dataPengadaan();
 ?>
 <!-- ======= Inv Section ======= -->

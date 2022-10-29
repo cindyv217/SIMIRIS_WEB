@@ -1,13 +1,16 @@
 <?php
 $id = $_REQUEST['id'];
 
-$model = new Inventaris();
+$obj_inv = new Inventaris();
+$inv = $obj_inv->getInv($id);
 
-$inv = $model->getInv($id);
-$pda = $model->getPengadaan($id);
-$pda_id = $model->getPengadaanInvDetail($id);
-$pmj = $model->getPeminjaman($id);
-$pmj_id = $model->getPeminjamanInvDetail($id);
+$obj_pda = new Pengadaan();
+$pda = $obj_pda->getPengadaanOnInvDetails($id);
+$pda_id = $obj_pda->getPengadaanOnInv($id);
+
+$obj_pmj = new Peminjaman();
+$pmj = $obj_pmj->getPeminjamanOnInvDetails($id);
+$pmj_id = $model->getPeminjamanOnInv($id);
 ?>
 <section id="detailInv" class="detailInv" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">

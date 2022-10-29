@@ -3,7 +3,9 @@ $id = $_REQUEST['id'];
 
 $obj_inv = new Inventaris();
 $data_inv = $obj_inv->getInvOnPengadaan($id);
-$pda_id = $obj_inv->getPengadaanDetail($id);
+
+$obj_pda = new Pengadaan();
+$pda_id = $obj_pda->getPengadaanOnInvDetail($id);
 ?>
 <section id="detailInv" class="detailInv" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">

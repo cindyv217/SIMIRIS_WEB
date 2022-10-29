@@ -3,8 +3,9 @@ $id = $_REQUEST['id'];
 
 $obj_inv = new Inventaris();
 $data_inv = $obj_inv->dataInv();
-$data_pda = $obj_inv->dataPengadaan();
-$pda_id = $obj_inv->getPengadaanInvDetail($id);
+
+$obj_pda = new Pengadaan();
+$pda_id = $obj_pda->getPengadaanOnInv($id);
 ?>
 <section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">
     <div class="row justify-content-center">
@@ -24,7 +25,7 @@ $pda_id = $obj_inv->getPengadaanInvDetail($id);
                         <div class="mb-3 row">
                             <div class="col-lg-2">
                                 <label for="inputPet" class="form-label">Pengadaan :</label>
-                                <input type="number" class="col-6 col-form-control" id="inputKode" name="fk_pengadaan_masuk" value="<?= $dpda['id_pengadaan'] ?>">
+                                <input type="number" class="col-6 col-form-control" id="inputKode" name="fk_pengadaan_masuk" value="<?= $pda_id['id_pengadaan'] ?>">
                             </div>
                         </div>
                         <hr>

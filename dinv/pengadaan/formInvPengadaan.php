@@ -1,12 +1,14 @@
 <?php
 $id = $_REQUEST['id'];
 
-$obj_pet = new Pegawai();
+$obj_pet = new Petugas();
 $data_pet = $obj_pet->dataPetugas();
 
-$obj_inv = new Inventaris();
+$obj_inv = new Asal();
 $data_asal = $obj_inv->dataAsal();
-$pda_id = $obj_inv->getPengadaanInvDetail($id);
+
+$obj_pda =  new Pengadaan();
+$pda_id = $obj_pda->getPengadaanOnInv($id);
 ?>
 <section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">
     <div class="row justify-content-center">

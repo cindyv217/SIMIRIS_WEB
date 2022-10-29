@@ -1,9 +1,11 @@
 <?php
 $id = $_REQUEST['id'];
 
-$model = new Pegawai();
-$pegawai = $model->getPegawai($id);
-$peminjaman = $model->getPeminjamanPegawai($id);
+$obj_peg = new Pegawai();
+$pegawai = $obj_peg->getPegawai($id);
+
+$obj_pmj = new Peminjaman();
+$peminjaman = $obj_pmj->getPeminjamanOnPegawai($id);
 ?>
 <section id="pegDetail" class="pegDetail" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">

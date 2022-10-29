@@ -1,14 +1,17 @@
 <?php
 $id = $_REQUEST['id'];
 
+$obj_inv = new Pengadaan();
+$data_pda = $obj_inv->getPengadaanOnInv($id);
+$pda_id = $obj_inv->getPengadaanOnInvDetail($id);
+
 $obj_inv = new Inventaris();
 $data_inv = $obj_inv->getInvOnPengadaan($id);
-$pda_id = $obj_inv->getPengadaanDetail($id);
 ?>
 <section id="detailInv" class="detailInv" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">
 
-        <a href="index.php?hal=dinv/dataInv_detail&id=<?= $pda_id['fk_barang_masuk'] ?>">
+        <a href="index.php?hal=dinv/dataInv_detail&id=<?= $data_pda['fk_barang_masuk'] ?>">
             <i class="bi bi-arrow-left fs-3" style="color: #5cb874;"></i>
         </a>
         <div class="section-title">

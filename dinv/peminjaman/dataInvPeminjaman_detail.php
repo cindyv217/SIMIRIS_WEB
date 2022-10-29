@@ -1,13 +1,14 @@
 <?php
 $id = $_REQUEST['id'];
 
-$model = new Inventaris();
-$pmj = $model->getPeminjamanDetail($id);
+$model = new Peminjaman();
+$data_pmj = $model->getPeminjamanOnInv($id);
+$pmj = $model->getPeminjamanOnInvDetail($id);
 ?>
 <section id="detailInv" class="detailInv" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">
 
-        <a href="index.php?hal=dinv/dataInv_detail&id=<?= $pmj['id_barang'] ?>">
+        <a href="index.php?hal=dinv/dataInv_detail&id=<?= $data_pmj['id_barang'] ?>">
             <i class="bi bi-arrow-left fs-3" style="color: #5cb874;"></i>
         </a>
         <div class="section-title">

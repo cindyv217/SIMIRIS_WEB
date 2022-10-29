@@ -1,7 +1,7 @@
 <?php
 $obj_inv = new Inventaris();
-$obj_pda = new Pengadaan();
 $data_inv = $obj_inv->dataInv();
+$obj_pda = new Pengadaan();
 $data_pda = $obj_pda->dataPengadaan();
 ?>
 <section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">

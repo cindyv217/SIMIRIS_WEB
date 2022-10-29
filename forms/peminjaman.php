@@ -1,10 +1,10 @@
 <?php
-$obj_inv = new Inventaris();
+$obj_inv = new Peminjaman();
 $data_inv = $obj_inv->dataPeminjaman();
 $obj_pet = new Petugas();
-$data_pet = $obj_pet->dataPetPeminjaman();
+$data_pet = $obj_pet->dataPetugas();
 $obj_peg = new Pegawai();
-$data_peg = $obj_peg->dataPegawaiPeminjaman();
+$data_peg = $obj_peg->dataPegawai();
 ?>
 <section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">
     <div class="row justify-content-center">

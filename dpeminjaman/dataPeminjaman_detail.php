@@ -1,16 +1,14 @@
 <?php
-//tangkap request id dari klik tombol detail
 $id = $_REQUEST['id'];
-//ciptakan object dari class Pegawai
-$model = new Peminjaman();
-//panggil fungsi untuk menampilkan data pegawai
-$pmj = $model->getPeminjaman($id);
+
+$obj_pmj = new Peminjaman();
+$pmj = $obj_pmj->getPeminjaman($id);
 // $inv = $model->getInvPeminjaman($id);
 
-$obj_inv = new Inventaris();
-$data_inv = $obj_inv->dataInv();
-$obj_pda = new Pengadaan();
-$data_pda = $obj_pda->dataPengadaan();
+// $obj_inv = new Inventaris();
+// $data_inv = $obj_inv->dataInv();
+// $obj_pda = new Pengadaan();
+// $data_pda = $obj_pda->dataPengadaan();
 ?>
 <section id="detailInv" class="detailInv" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">

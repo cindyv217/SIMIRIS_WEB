@@ -1,15 +1,15 @@
 <?php
-$model = new Kategori();
-$data_kat = $model->dataKategori();
+$model = new Asal();
+$data_as = $model->dataAsal();
 ?>
 <section id="kat" class="kat" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">
 
         <div class="section-title">
-            <h2>Daftar Kategori Barang</h2>
+            <h2>Daftar Asal Pengadaan</h2>
         </div>
 
-        <a class="btn btn-sm text-white mb-3" style="background-color: #5cb874;" href="index.php?hal=forms/kategori">
+        <a class="btn btn-sm text-white mb-3" style="background-color: #5cb874;" href="index.php?hal=forms/asal">
             Tambah <i class="bi bi-plus-lg fs-7"></i>
         </a>
 
@@ -19,18 +19,18 @@ $data_kat = $model->dataKategori();
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Nama Kategori</th>
+                            <th scope="col">Jenis Asal</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
-                        foreach ($data_kat as $row) {
+                        foreach ($data_as as $row) {
                         ?>
                             <tr>
                                 <th scope="row"><?= $no ?></th>
-                                <td><?= $row['nama_kategori'] ?></td>
+                                <td><?= $row['nama_asal'] ?></td>
                                 <td>
                                     <a href="">
                                         <i class="bi bi-eye-fill"></i>

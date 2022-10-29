@@ -1,13 +1,15 @@
 <?php
 $id = $_REQUEST['id'];
 
-$obj_inv = new Inventaris();
+$obj_inv = new Peminjaman();
 $data_inv = $obj_inv->dataPeminjaman();
-$pmj_id = $obj_inv->getPeminjamanInvDetail($id);
+$pmj_id = $obj_inv->getPeminjamanOnInv($id);
+
 $obj_pet = new Petugas();
-$data_pet = $obj_pet->dataPetPeminjaman();
+$data_pet = $obj_pet->dataPetugas();
+
 $obj_peg = new Pegawai();
-$data_peg = $obj_peg->dataPegawaiPeminjaman();
+$data_peg = $obj_peg->dataPegawai();
 ?>
 <section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">
     <div class="row justify-content-center">
@@ -50,12 +52,6 @@ $data_peg = $obj_peg->dataPegawaiPeminjaman();
                             <label for="inputTgl" class="col-sm-3 col-form-label">Tanggal</label>
                             <div class="col-sm-9">
                                 <input type="date" class="form-control" id="inputTgl" name="tgl_peminjaman" value="" required>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="inputJml" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control" id="inputJml" name="jumlah_peminjaman" value="" required>
                             </div>
                         </div>
                         <div class="mb-3 row">
