@@ -20,8 +20,8 @@ switch ($tombol) {
         break;
 
     default:
-        header('Location:index.php?hal=datas/pegawai/dataPegawai');
+        header('Location:index.php?hal=dpegawai/dataPegawai');
         break;
 }
 //step 4 diarahkan ke suatu halaman, jika sudah selesai prosesnya
-header('Location:index.php?hal=datas/pegawai/dataPegawai');
+header('Location:index.php?hal=dpegawai/dataPegawai');

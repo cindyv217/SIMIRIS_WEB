@@ -33,15 +33,14 @@ class Peminjaman
     }
 
     // ======================== BANYAK DATA ========================
-    public function getPeminjamanOnInv($id)
+    public function getPeminjamans($id)
     {
-        $sql = "SELECT peminjaman.*, detail_pinjam.*, data_pegawai.*, 
+        $sql = "SELECT peminjaman.*, data_pegawai.*, 
                 departemen.nama_departemen
                 FROM peminjaman
-                INNER JOIN detail_pinjam ON detail_pinjam.fk_peminjaman_pinjam = peminjaman.id_peminjaman
                 INNER JOIN data_pegawai ON data_pegawai.id_pegawai = peminjaman.fk_pegawai_peminjaman
                 INNER JOIN departemen ON departemen.id_departemen = data_pegawai.fk_departemen_pegawai
-                WHERE peminjaman.fk_barang_peminjaman = ?";
+                WHERE peminjaman.id_peminjaman = ?";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute([$id]);
         $rs = $ps->fetchAll();
@@ -50,12 +49,13 @@ class Peminjaman
 
     public function getPeminjamanOnInvDetails($id)
     {
-        $sql = "SELECT data_barang.*, kategori_barang.nama_kategori, 
-                detail_pinjam.*
+        $sql = "SELECT peminjaman.*, detail_pinjam.*, data_pegawai.*, 
+                departemen.nama_departemen
                 FROM detail_pinjam
-                INNER JOIN data_barang ON data_barang.id_barang = detail_pinjam.fk_barang_pinjam
-                INNER JOIN kategori_barang ON kategori_barang.id_kategori = data_barang.fk_kategori_barang
-                WHERE detail_pinjam.fk_barang_peminjaman = ?";
+                INNER JOIN peminjaman ON peminjaman.id_peminjaman = detail_pinjam.fk_peminjaman_pinjam
+                INNER JOIN data_pegawai ON data_pegawai.id_pegawai = peminjaman.fk_pegawai_peminjaman
+                INNER JOIN departemen ON departemen.id_departemen = data_pegawai.fk_departemen_pegawai
+                WHERE detail_pinjam.fk_barang_pinjam = ?";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute([$id]);
         $rs = $ps->fetchAll();
@@ -96,7 +96,7 @@ class Peminjaman
                 FROM detail_pinjam
                 INNER JOIN data_barang ON data_barang.id_barang = detail_pinjam.fk_barang_pinjam
                 INNER JOIN kategori_barang ON kategori_barang.id_kategori = data_barang.fk_kategori_barang
-                WHERE detail_pinjam.fk_barang_peminjaman = ?";
+                WHERE detail_pinjam.fk_barang_pinjam = ?";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute([$id]);
         $rs = $ps->fetch();

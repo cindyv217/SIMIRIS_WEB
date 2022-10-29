@@ -50,27 +50,6 @@ $data_peg = $obj_peg->dataPegawai();
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputJml" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control" id="inputJml" name="jumlah_peminjaman" value="" required>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="inputBarang" class="col-sm-3 col-form-label">Inventaris</label>
-                            <div class="col-sm-9">
-                                <select class="form-select" aria-label="Default select example" name="fk_barang_peminjaman" required>
-                                    <option selected>-- Pilih Inventaris--</option>
-                                    <?php
-                                    foreach ($data_inv as $inv) {
-                                    ?>
-                                        <option value="<?= $inv['id_barang'] ?>"><?= $inv['kode_barang'] ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
                             <label for="inputPeg" class="col-sm-3 col-form-label">Peminjam</label>
                             <div class="col-sm-9">
                                 <select class="form-select" aria-label="Default select example" name="fk_pegawai_peminjaman" required>

@@ -22,8 +22,8 @@ switch ($tombol) {
         break;
 
     default:
-        header('Location:index.php?hal=inv/dataInv');
+        header('Location:index.php?hal=dinv/dataInv');
         break;
 }
 //step 4 diarahkan ke suatu halaman, jika sudah selesai prosesnya
-header('Location:index.php?hal=datas/inv/dataInv');
+header('Location:index.php?hal=dinv/dataInv');

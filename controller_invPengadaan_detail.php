@@ -18,7 +18,7 @@ switch ($tombol) {
         break;
 
     default:
-        header('Location:index.php?hal=dpengadaan/dataPengadaan_detail&id=' . $fk_pengadaan_masuk);
+        header('Location:index.php?hal=dinv/dataInv_invdetail&id=' . $fk_barang_masuk);
         break;
 }
-header('Location:index.php?hal=dpengadaan/dataPengadaan_detail&id=' . $fk_pengadaan_masuk);
+header('Location:index.php?hal=dinv/dataInv_invdetail&id=' . $fk_barang_masuk);

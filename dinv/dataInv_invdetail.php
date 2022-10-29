@@ -2,7 +2,8 @@
 $id = $_REQUEST['id'];
 
 $obj_inv = new Inventaris();
-$data_inv = $obj_inv->getInv($id);
+$inv_id = $obj_inv->getInv($id);
+$data_inv = $obj_inv->getInvs($id);
 
 $obj_pda = new Pengadaan();
 $data_pda = $obj_pda->getPengadaanOnInvDetails($id);
@@ -12,6 +13,10 @@ $data_pmj = $obj_pmj->getPeminjamanOnInvDetails($id);
 ?>
 <section id="detailInv" class="detailInv" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">
+
+        <a href="index.php?hal=dinv/dataInv">
+            <i class="bi bi-arrow-left fs-3" style="color: #5cb874;"></i>
+        </a>
 
         <div class="section-title">
             <h2>Detail Inventaris</h2>
@@ -25,22 +30,22 @@ $data_pmj = $obj_pmj->getPeminjamanOnInvDetails($id);
                             <tr>
                                 <th scope="col">Kode</th>
                                 <td scope="col">:</td>
-                                <td scope="col"><?= $data_inv['kode_barang'] ?></td>
+                                <td scope="col"><?= $inv_id['kode_barang'] ?></td>
                             </tr>
                             <tr>
                                 <th scope="col">Nama</th>
                                 <td scope="col">:</td>
-                                <td scope="col"><?= $data_inv['nama_barang'] ?></td>
+                                <td scope="col"><?= $inv_id['nama_barang'] ?></td>
                             </tr>
                             <tr>
                                 <th scope="col">Stok</th>
                                 <td scope="col">:</td>
-                                <td scope="col"><?= $data_inv['stok_barang'] ?></td>
+                                <td scope="col"><?= $inv_id['stok_barang'] ?></td>
                             </tr>
                             <tr>
                                 <th scope="col">Kategori</th>
                                 <td scope="col">:</td>
-                                <td scope="col"><?= $data_inv['nama_kategori'] ?></td>
+                                <td scope="col"><?= $inv_id['nama_kategori'] ?></td>
                             </tr>
                         </table>
                     </div>
@@ -52,7 +57,7 @@ $data_pmj = $obj_pmj->getPeminjamanOnInvDetails($id);
         <div class=" row justify-content-center">
             <div class="col">
 
-                <a class="btn btn-sm text-white mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/pengadaanDetail">
+                <a class="btn btn-sm text-white mb-2" style="background-color: #5cb874;" href="index.php?hal=dinv/form_pengadaanDetail&id=<?= $id ?>">
                     Tambah <i class="bi bi-plus-lg fs-7"></i>
                 </a>
 
@@ -102,7 +107,7 @@ $data_pmj = $obj_pmj->getPeminjamanOnInvDetails($id);
         <div class=" row justify-content-center">
             <div class="col">
 
-                <a class="btn btn-sm text-white mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/peminjamanDetail">
+                <a class="btn btn-sm text-white mb-2" style="background-color: #5cb874;" href="index.php?hal=dinv/form_peminjamanDetail&id=<?= $id ?>">
                     Tambah <i class="bi bi-plus-lg fs-7"></i>
                 </a>
 

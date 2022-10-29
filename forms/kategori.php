@@ -1,6 +1,6 @@
 <section id="katForm" class="katForm p-5" style="background-color: #f8f9fa;">
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-6">
             <div class="card shadow p-5" style="background-color: #fff; border-radius: 10px;">
 
                 <a href="index.php?hal=datas/dataKat">

@@ -41,7 +41,7 @@ $data_inv = $model->dataInv();
                                 <td><?= $row['stok_barang'] ?></td>
                                 <td><?= $row['nama_kategori'] ?></td>
                                 <td>
-                                    <a href="index.php?hal=dinv/dataInv_detail&id=<?= $row['id_barang'] ?>">
+                                    <a href="index.php?hal=dinv/dataInv_invdetail&id=<?= $row['id_barang'] ?>">
                                         <button type="button" class="btn btn-info btn-sm" title="Detail Inventaris">
                                             <i class="bi bi-eye-fill text-light"></i>
                                         </button>

@@ -5,15 +5,12 @@ include_once 'models/Peminjaman.php';
 $fk_petugas_peminjaman = $_POST['fk_petugas_peminjaman'];
 $kode_peminjaman = $_POST['kode_peminjaman'];
 $tgl_peminjaman = $_POST['tgl_peminjaman'];
-$jumlah_peminjaman = $_POST['jumlah_peminjaman'];
-$fk_barang_peminjaman = $_POST['fk_barang_peminjaman'];
 $fk_pegawai_peminjaman = $_POST['fk_pegawai_peminjaman'];
 //step 2 simpan ke array
 $data = [
     $fk_petugas_peminjaman,
     $kode_peminjaman,
     $tgl_peminjaman,
-    $fk_barang_peminjaman,
     $fk_pegawai_peminjaman,
 ];
 //step 3 eksekusi tombol dengan mekanisme PDO
@@ -25,8 +22,8 @@ switch ($tombol) {
         break;
 
     default:
-        header('Location:index.php?hal=datas/peminjaman/dataPeminjaman');
+        header('Location:index.php?hal=dpeminjaman/dataPeminjaman');
         break;
 }
 //step 4 diarahkan ke suatu halaman, jika sudah selesai prosesnya
-header('Location:index.php?hal=datas/peminjaman/dataPeminjaman');
+header('Location:index.php?hal=dpeminjaman/dataPeminjaman');

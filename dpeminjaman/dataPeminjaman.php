@@ -10,9 +10,9 @@ $data_pmj = $model->dataPeminjaman();
             <h2>Data Peminjaman</h2>
         </div>
 
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col-12">
+            <div class="col-8">
                 <a class="btn btn-sm text-light mb-3" style="background-color: #5cb874;" href="index.php?hal=forms/peminjaman">
                     Tambah <i class="bi bi-plus-lg fs-7"></i>
                 </a>
@@ -20,14 +20,12 @@ $data_pmj = $model->dataPeminjaman();
                     <thead>
                         <tr>
                             <th rowspan="2">NO</th>
-                            <th colspan="3">Peminjaman</th>
-                            <th rowspan="2">Kode Barang</th>
+                            <th colspan="2">Peminjaman</th>
                             <th rowspan="2">AKSI</th>
                         </tr>
                         <tr>
                             <th scope="col">Kode</th>
                             <th scope="col">Tanggal</th>
-                            <th scope="col">Jumlah</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,10 +37,8 @@ $data_pmj = $model->dataPeminjaman();
                                 <th scope="row"><?= $no ?></th>
                                 <td><?= $row['kode_peminjaman'] ?></td>
                                 <td><?= $row['tgl_peminjaman'] ?></td>
-                                <td><?= $row['jumlah_peminjaman'] ?></td>
-                                <td><?= $row['kode_barang'] ?></td>
                                 <td>
-                                    <a href="index.php?hal=dinv/peminjaman/dataInvPeminjaman_detail&id=<?= $row['id_peminjaman'] ?>">
+                                    <a href="index.php?hal=dpeminjaman/dataPeminjaman_detail&id=<?= $row['id_peminjaman'] ?>">
                                         <i class="bi bi-eye-fill"></i>
                                     </a>
                                 </td>

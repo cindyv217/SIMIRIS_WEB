@@ -23,6 +23,7 @@
                         <li class="dropdown"><a href="#"><span>Pengelolaan Inventaris</span> <i class="bi bi-chevron-right"></i></a>
                             <ul>
                                 <li><a href="index.php?hal=datas/dataKat">Daftar Kategori</a></li>
+                                <li><a href="index.php?hal=datas/dataAsal">Daftar Asal</a></li>
                                 <li><a href="index.php?hal=dpengadaan/dataPengadaan">Daftar Pengadaan</a></li>
                                 <li><a href="index.php?hal=dpeminjaman/dataPeminjaman">Daftar Peminjaman</a></li>
                             </ul>

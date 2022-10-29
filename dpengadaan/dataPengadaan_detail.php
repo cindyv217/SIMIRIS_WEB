@@ -1,11 +1,12 @@
 <?php
 $id = $_REQUEST['id'];
 
+$obj_pda = new Pengadaan();
+$data_pda = $obj_pda->getPengadaans($id);
+$pda_id = $obj_pda->getPengadaan($id);
+
 $obj_inv = new Inventaris();
 $data_inv = $obj_inv->getInvOnPengadaan($id);
-
-$obj_pda = new Pengadaan();
-$pda_id = $obj_pda->getPengadaanOnInvDetail($id);
 ?>
 <section id="detailInv" class="detailInv" style="background-color: #f8f9fa;">
     <div class="container shadow p-5" style="background-color: #fff; border-radius: 10px;">
@@ -44,10 +45,10 @@ $pda_id = $obj_pda->getPengadaanOnInvDetail($id);
         </div>
         <hr>
 
-        <h4 class="mt-3 mb-2 fw-bold">Daftar Inventaris</h4>
+        <h4 class="mt-4 mb-2 fw-bold">Daftar Inventaris</h4>
         <div class=" row justify-content-center">
             <div class="col">
-                <a class="btn btn-sm text-light mb-3" style="background-color: #5cb874;" href="index.php?hal=dinv/pengadaan/formInvPengadaan&id=<?= $pda_id['fk_barang_masuk'] ?>">
+                <a class="btn btn-sm text-light mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/pengadaanDetail&id=<?= $pda_id['id_pengadaan'] ?>">
                     Tambah <i class="bi bi-plus-lg fs-7"></i>
                 </a>
                 <table class="table table-sm table-striped table-bordered text-center">

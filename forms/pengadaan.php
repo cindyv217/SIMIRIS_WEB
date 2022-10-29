@@ -1,7 +1,8 @@
 <?php
 $obj_asal = new Asal();
-$obj_pet = new Petugas();
 $data_asal = $obj_asal->dataAsal();
+
+$obj_pet = new Petugas();
 $data_pet = $obj_pet->dataPetugas();
 ?>
 <section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">

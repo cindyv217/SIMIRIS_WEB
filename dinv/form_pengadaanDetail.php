@@ -2,17 +2,17 @@
 $id = $_REQUEST['id'];
 
 $obj_inv = new Inventaris();
-$data_inv = $obj_inv->dataInv();
+$data_inv = $obj_inv->getInv($id);
 
 $obj_pda = new Pengadaan();
-$pda_id = $obj_pda->getPengadaanOnInv($id);
+$data_pda = $obj_pda->dataPengadaan();
 ?>
 <section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card shadow p-5" style="background-color: #fff; border-radius: 10px;">
 
-                <a href="index.php?hal=dinv/pengadaan/dataInvPengadaan_detail&id=<?= $pda_id['id_pengadaan'] ?>">
+                <a href="index.php?hal=dinv/dataInv_detail&id=<?= $id ?>">
                     <i class="bi bi-arrow-left fs-3" style="color: #5cb874;"></i>
                 </a>
 
@@ -20,12 +20,21 @@ $pda_id = $obj_pda->getPengadaanOnInv($id);
                     <h2>Input Data Pengadaan Inventaris</h2>
                 </div>
 
-                <form action="controller_pengadaan_detail.php" method="POST" class="row justify-content-center">
+                <form action="controller_invpengadaan_detail.php" method="POST" class="row justify-content-center">
                     <div class="col">
                         <div class="mb-3 row">
-                            <div class="col-lg-2">
-                                <label for="inputPet" class="form-label">Pengadaan :</label>
-                                <input type="number" class="col-6 col-form-control" id="inputKode" name="fk_pengadaan_masuk" value="<?= $pda_id['id_pengadaan'] ?>">
+                            <div class="col-sm-3">
+                                <label for="inputPda" class="form-label">Pengadaan :</label>
+                                <select class="form-select" aria-label="Default select example" name="fk_pengadaan_masuk" required>
+                                    <option selected>-- Pilih Kode --</option>
+                                    <?php
+                                    foreach ($data_pda as $pda) {
+                                    ?>
+                                        <option value="<?= $pda['id_pengadaan'] ?>"><?= $pda['kode_pengadaan'] ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <hr>
@@ -33,14 +42,7 @@ $pda_id = $obj_pda->getPengadaanOnInv($id);
                             <label for="inputAsal" class="col-sm-3 col-form-label">Kode Inventaris</label>
                             <div class="col-sm-9">
                                 <select class="form-select" aria-label="Default select example" name="fk_barang_masuk" required>
-                                    <option selected>-- Pilih Kode --</option>
-                                    <?php
-                                    foreach ($data_inv as $inv) {
-                                    ?>
-                                        <option value="<?= $inv['id_barang'] ?>"><?= $inv['kode_barang'] ?></option>
-                                    <?php
-                                    }
-                                    ?>
+                                    <option value="<?= $data_inv['id_barang'] ?>" selected><?= $data_inv['kode_barang'] ?></option>
                                 </select>
                             </div>
                         </div>

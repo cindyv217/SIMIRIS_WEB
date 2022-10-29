@@ -23,6 +23,19 @@ class Inventaris
 
     // ============================= INFO DETAIL BANYAK DATA BY ===========================
 
+    public function getInvs($id)
+    {
+        $sql = "SELECT data_barang.*,
+                kategori_barang.nama_kategori
+                FROM data_barang
+                INNER JOIN kategori_barang ON kategori_barang.id_kategori = data_barang.fk_kategori_barang
+                WHERE data_barang.id_barang = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute([$id]);
+        $rs = $ps->fetchAll();
+        return $rs;
+    }
+
     // ============ INV ON PROSES =============
     public function getInvOnPengadaan($id)
     {
@@ -45,7 +58,7 @@ class Inventaris
                 FROM detail_pinjam
                 INNER JOIN data_barang ON data_barang.id_barang = detail_pinjam.fk_barang_pinjam
                 INNER JOIN kategori_barang ON kategori_barang.id_kategori = data_barang.fk_kategori_barang
-                WHERE detail_pinjam.fk_barang_peminjaman = ?";
+                WHERE detail_pinjam.fk_peminjaman_pinjam = ?";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute([$id]);
         $rs = $ps->fetchAll();

@@ -9,12 +9,12 @@ $data_as = $model->dataAsal();
             <h2>Daftar Asal Pengadaan</h2>
         </div>
 
-        <a class="btn btn-sm text-white mb-3" style="background-color: #5cb874;" href="index.php?hal=forms/asal">
-            Tambah <i class="bi bi-plus-lg fs-7"></i>
-        </a>
 
         <div class="row justify-content-center">
             <div class="col-7">
+                <a class="btn btn-sm text-white mb-3" style="background-color: #5cb874;" href="index.php?hal=forms/asal">
+                    Tambah <i class="bi bi-plus-lg fs-7"></i>
+                </a>
                 <table class="table table-sm table-striped">
                     <thead>
                         <tr>
