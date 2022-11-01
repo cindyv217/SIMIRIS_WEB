@@ -17,8 +17,13 @@ switch ($tombol) {
         $model->simpan($data);
         break;
 
+    case 'hapus':
+        unset($data);
+        $model->hapus($_POST['idx']);
+        break;
+
     default:
-        header('Location:index.php?hal=dpeminjaman/dataPeminjaman_detail&id=' . $fk_peminjaman_pinjam);
+        header('Location:index.php?hal=dpeminjaman/dataPeminjaman');
         break;
 }
-header('Location:index.php?hal=dpeminjaman/dataPeminjaman_detail&id=' . $fk_peminjaman_pinjam);
+header('Location:index.php?hal=dpeminjaman/dataPeminjaman');

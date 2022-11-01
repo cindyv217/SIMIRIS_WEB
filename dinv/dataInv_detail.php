@@ -43,6 +43,17 @@ $data_pmj = $obj_pmj->getPeminjamanOnInvDetails($id);
                                 <td scope="col"><?= $data_inv['nama_kategori'] ?></td>
                             </tr>
                         </table>
+                        <?php
+                        if ($sesi['role'] == 'Admin') { //---------hanya untuk admin----------
+                        ?>
+                            <form action="controller_inv.php" method="POST">
+                                <a href="index.php?hal=forms/updateInv&idedit=<?= $data_inv['id_barang'] ?>">
+                                    <button type="button" class="btn btn-warning btn-sm text-light col-12" title="Ubah Inventaris">
+                                        Edit <i class="bi bi-pencil-square" aria-hidden="true"></i>
+                                    </button>
+                                </a>
+                            </form>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -52,9 +63,9 @@ $data_pmj = $obj_pmj->getPeminjamanOnInvDetails($id);
         <div class=" row justify-content-center">
             <div class="col">
 
-                <a class="btn btn-sm text-white mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/pengadaanDetail">
+                <!-- <a class="btn btn-sm text-white mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/pengadaanDetail">
                     Tambah <i class="bi bi-plus-lg fs-7"></i>
-                </a>
+                </a> -->
 
                 <table class="table table-sm table-striped table-bordered text-center">
                     <thead>
@@ -102,9 +113,9 @@ $data_pmj = $obj_pmj->getPeminjamanOnInvDetails($id);
         <div class=" row justify-content-center">
             <div class="col">
 
-                <a class="btn btn-sm text-white mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/peminjamanDetail">
+                <!-- <a class="btn btn-sm text-white mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/peminjamanDetail">
                     Tambah <i class="bi bi-plus-lg fs-7"></i>
-                </a>
+                </a> -->
 
                 <table class="table table-sm table-striped table-bordered text-center">
                     <thead>

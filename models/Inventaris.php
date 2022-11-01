@@ -79,12 +79,31 @@ class Inventaris
         return $rs;
     }
 
+    // ==================================== SIMPAN ================================
     public function simpan($data)
     {
-        $sql = "INSERT INTO data_barang (kode_barang, nama_barang, stok_barang, fk_kategori_barang) 
+        $sql = "INSERT INTO data_barang (kode_barang, nama_barang, fk_kategori_barang, stok_barang) 
         VALUES (?,?,?,?)";
         //menggunakan mekanisme prepare statement PDO
         $ps = $this->koneksi->prepare($sql);
         $ps->execute($data);
+    }
+
+    // ============================= UBAH =============================
+    public function ubah($data)
+    {
+        $sql = "UPDATE data_barang 
+                SET kode_barang = ?, nama_barang = ?, fk_kategori_barang = ?, stok_barang = ?
+                WHERE id_barang = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute($data);
+    }
+
+    // =========================== HAPUS =========================
+    public function hapus($id)
+    {
+        $sql = "DELETE FROM data_barang WHERE id_barang = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute([$id]);
     }
 }

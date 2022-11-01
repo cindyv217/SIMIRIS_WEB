@@ -4,6 +4,9 @@ $id = $_REQUEST['id'];
 $obj_pmj = new Peminjaman();
 $pmj_id = $obj_pmj->getPeminjaman($id);
 
+$obj_peg = new Pegawai();
+$data_peg = $obj_peg->getPegawaiOnPeminjaman($id);
+
 $obj_inv = new Inventaris();
 $data_inv = $obj_inv->getInvOnPeminjaman($id);
 ?>
@@ -33,6 +36,13 @@ $data_inv = $obj_inv->getInvOnPeminjaman($id);
                                 <td scope="col"><?= $pmj_id['tgl_peminjaman'] ?></td>
                             </tr>
                             <tr>
+                                <th>
+                                    <a href="index.php?hal=dpegawai/dataPegawai_detail&id=<?= $data_peg['id_pegawai'] ?>">
+                                        Data Peminjam
+                                    </a>
+                                </th>
+                            </tr>
+                            <tr>
                                 <th scope="col">NIP</th>
                                 <td scope="col">:</td>
                                 <td scope="col"><?= $pmj_id['nip_pegawai'] ?></td>
@@ -43,6 +53,17 @@ $data_inv = $obj_inv->getInvOnPeminjaman($id);
                                 <td scope="col"><?= $pmj_id['nama_pegawai'] ?></td>
                             </tr>
                         </table>
+                        <?php
+                        if ($sesi['role'] == 'Admin') { //---------hanya untuk admin----------
+                        ?>
+                            <form action="controller_peminjaman.php" method="POST">
+                                <a href="index.php?hal=forms/updatePeminjaman&idedit=<?= $pmj_id['id_peminjaman'] ?>">
+                                    <button type="button" class="btn btn-warning btn-sm text-light col-12" title="Ubah Peminjaman">
+                                        Edit <i class="bi bi-pencil-square" aria-hidden="true"></i>
+                                    </button>
+                                </a>
+                            </form>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -52,9 +73,13 @@ $data_inv = $obj_inv->getInvOnPeminjaman($id);
         <h4 class="mt-4 mb-2 fw-bold">Daftar Inventaris</h4>
         <div class=" row justify-content-center">
             <div class="col">
-                <a class="btn btn-sm text-light mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/peminjamanDetail&id=<?= $pmj_id['id_peminjaman'] ?>">
-                    Tambah <i class="bi bi-plus-lg fs-7"></i>
-                </a>
+                <?php
+                if ($sesi['role'] == 'Admin') { //---------hanya untuk admin----------
+                ?>
+                    <a class="btn btn-sm text-light mb-2" style="background-color: #5cb874;" href="index.php?hal=forms/peminjamanDetail&id=<?= $pmj_id['id_peminjaman'] ?>">
+                        Tambah <i class="bi bi-plus-lg fs-7"></i>
+                    </a>
+                <?php } ?>
                 <table class="table table-sm table-striped table-bordered text-center">
                     <thead>
                         <tr>
@@ -81,11 +106,21 @@ $data_inv = $obj_inv->getInvOnPeminjaman($id);
                                 <td><?= $row['nama_kategori'] ?></td>
                                 <td><?= $row['jumlah_pinjam'] ?></td>
                                 <td>
-                                    <a href="index.php?hal=dinv/dataInv_detail&id=<?= $row['id_barang'] ?>">
-                                        <button type="button" class="btn btn-info btn-sm" title="Detail Inventaris">
-                                            <i class="bi bi-eye-fill text-light"></i>
-                                        </button>
-                                    </a>
+                                    <form action="controller_peminjaman_detail.php" method="POST">
+                                        <a href="index.php?hal=dinv/dataInv_detail&id=<?= $row['id_barang'] ?>">
+                                            <button type="button" class="btn btn-info btn-sm" title="Detail Inventaris">
+                                                <i class="bi bi-eye-fill text-light"></i>
+                                            </button>
+                                        </a>
+                                        <?php
+                                        if ($sesi['role'] == 'Admin') { //---------hanya untuk admin----------
+                                        ?>
+                                            <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus" onclick="return confirm('Anda yakin data akan dihapus?')" title="Hapus data pengadaan">
+                                                <i class="bi bi-trash text-light" aria-hidden="true"></i>
+                                            </button>
+                                            <input type="hidden" name="idx" value="<?= $row['id_detail_pinjam'] ?>">
+                                        <?php } ?>
+                                    </form>
                                 </td>
                             </tr>
                         <?php

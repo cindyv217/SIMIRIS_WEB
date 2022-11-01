@@ -94,9 +94,27 @@ class Pengadaan
 
     public function simpan($data)
     {
-        $sql = "INSERT INTO pengadaan (kode_pengadaan, tgl_pengadaan, fk_asal_pengadaan, fk_petugas_pengadaan) 
-        VALUES (?,?,?,?)";
+        $sql = "INSERT INTO pengadaan (kode_pengadaan, tgl_pengadaan, fk_asal_pengadaan) 
+        VALUES (?,?,?)";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute($data);
+    }
+
+    // ============================= UBAH =============================
+    public function ubah($data)
+    {
+        $sql = "UPDATE pengadaan 
+                SET kode_pengadaan = ?, tgl_pengadaan = ?, fk_asal_pengadaan = ?
+                WHERE id_pengadaan = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute($data);
+    }
+
+    // =========================== HAPUS =========================
+    public function hapus($id)
+    {
+        $sql = "DELETE FROM pengadaan WHERE id_pengadaan = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute([$id]);
     }
 }

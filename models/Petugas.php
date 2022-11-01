@@ -12,8 +12,8 @@ class Petugas
     public function dataPetugas()
     {
         $sql = "SELECT data_petugas.*, data_pegawai.*
-                FROM data_pegawai
-                INNER JOIN data_petugas ON data_petugas.fk_pegawai_petugas = data_pegawai.id_pegawai";
+                FROM data_petugas
+                INNER JOIN data_pegawai ON data_pegawai.id_pegawai = data_petugas.fk_pegawai_petugas";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute();
         $rs = $ps->fetchAll();

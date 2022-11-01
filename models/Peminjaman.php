@@ -62,13 +62,15 @@ class Peminjaman
         return $rs;
     }
 
-    public function getPeminjamanOnPegawai($id)
+    public function getPeminjamanOnPegawaiDetails($id)
     {
-        $sql = "SELECT peminjaman.*
+        $sql = "SELECT peminjaman.*, data_pegawai.*, 
+                departemen.nama_departemen
                 FROM peminjaman
                 INNER JOIN data_pegawai ON data_pegawai.id_pegawai = peminjaman.fk_pegawai_peminjaman
-                WHERE data_pegawai.id_pegawai = ?
-                ORDER BY peminjaman.tgl_peminjaman ASC";
+                INNER JOIN departemen ON departemen.id_departemen = data_pegawai.fk_departemen_pegawai
+                WHERE peminjaman.fk_pegawai_peminjaman = ?
+                GROUP BY peminjaman.kode_peminjaman";
         $ps = $this->koneksi->prepare($sql);
         $ps->execute([$id]);
         $rs = $ps->fetchAll();
@@ -103,12 +105,31 @@ class Peminjaman
         return $rs;
     }
 
+    // ======================= SIMPAN =============================
     public function simpan($data)
     {
-        $sql = "INSERT INTO peminjaman (fk_petugas_peminjaman, kode_peminjaman, tgl_peminjaman, fk_pegawai_peminjaman) 
-        VALUES (?,?,?,?)";
+        $sql = "INSERT INTO peminjaman (kode_peminjaman, tgl_peminjaman, fk_pegawai_peminjaman) 
+        VALUES (?,?,?)";
         //menggunakan mekanisme prepare statement PDO
         $ps = $this->koneksi->prepare($sql);
         $ps->execute($data);
+    }
+
+    // ============================= UBAH =============================
+    public function ubah($data)
+    {
+        $sql = "UPDATE peminjaman 
+                SET kode_peminjaman = ?, tgl_peminjaman = ?, fk_pegawai_peminjaman = ? 
+                WHERE id_peminjaman = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute($data);
+    }
+
+    // =========================== HAPUS =========================
+    public function hapus($id)
+    {
+        $sql = "DELETE FROM peminjaman WHERE id_peminjaman = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute([$id]);
     }
 }

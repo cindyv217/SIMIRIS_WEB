@@ -11,14 +11,25 @@ $data = [
     $fk_pengadaan_masuk,
 ];
 $model = new PengadaanDetail();
+// $pda_id = $model->getPengadaanDetails($_REQUEST['id']);
 $tombol = $_REQUEST['proses'];
 switch ($tombol) {
     case 'simpan':
         $model->simpan($data);
         break;
 
+    case 'ubah':
+        $data[] = $_POST['idx'];
+        $model->ubah($data);
+        break;
+
+    case 'hapus':
+        unset($data);
+        $model->hapus($_POST['idx']);
+        break;
+
     default:
-        header('Location:index.php?hal=dpengadaan/dataPengadaan_detail&id=' . $fk_pengadaan_masuk);
+        header('Location:index.php?hal=dpengadaan/dataPengadaan');
         break;
 }
-header('Location:index.php?hal=dpengadaan/dataPengadaan_detail&id=' . $fk_pengadaan_masuk);
+header('Location:index.php?hal=dpengadaan/dataPengadaan');

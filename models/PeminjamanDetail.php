@@ -25,8 +25,27 @@ class PeminjamanDetail
     {
         $sql = "INSERT INTO detail_pinjam (jumlah_pinjam, fk_barang_pinjam, fk_peminjaman_pinjam) 
         VALUES (?,?,?)";
-        //menggunakan mekanisme prepare statement PDO
         $ps = $this->koneksi->prepare($sql);
         $ps->execute($data);
+    }
+
+    // ============================= UBAH =============================
+    public function ubah($data)
+    {
+        $sql = "UPDATE detail_pinjam 
+                SET jumlah_pinjam = ?, fk_barang_pinjam = ?, fk_peminjaman_pinjam = ? 
+                WHERE fk_barang_pinjam = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute($data);
+    }
+
+    // =========================== HAPUS =========================
+    public function hapus($id)
+    {
+        $sql = "DELETE 
+                FROM detail_pinjam 
+                WHERE id_detail_pinjam = ?";
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute([$id]);
     }
 }

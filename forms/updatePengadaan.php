@@ -2,8 +2,13 @@
 $obj_asal = new Asal();
 $data_asal = $obj_asal->dataAsal();
 
+$obj_pda = new Pengadaan();
+
+// EDIT DATA
+$idedit = $_REQUEST['idedit'];
+$pda = !empty($idedit) ? $obj_pda->getPengadaan($idedit) : array();
 ?>
-<section id="pdaForm" class="pdaForm p-5" style="background-color: #f8f9fa;">
+<section id="invForm" class="invForm p-5" style="background-color: #f8f9fa;">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card shadow p-5" style="background-color: #fff; border-radius: 10px;">
@@ -21,13 +26,13 @@ $data_asal = $obj_asal->dataAsal();
                         <div class="mb-3 row">
                             <label for="inputKode" class="col-sm-3 col-form-label">Kode</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputKode" name="kode_pengadaan" value="" required>
+                                <input type="text" class="form-control" id="inputKode" name="kode_pengadaan" value="<?= $pda['kode_pengadaan'] ?>" required>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="inputTgl" class="col-sm-3 col-form-label">Tanggal</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" id="inputTgl" name="tgl_pengadaan" value="" required>
+                                <input type="date" class="form-control" id="inputTgl" name="tgl_pengadaan" value="<?= $pda['tgl_pengadaan'] ?>" required>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -37,15 +42,17 @@ $data_asal = $obj_asal->dataAsal();
                                     <option selected>-- Pilih Asal Pengadaan --</option>
                                     <?php
                                     foreach ($data_asal as $asal) {
+                                        $selected = $pda['fk_asal_pengadaan'] == $asal['id_asal'] ? 'selected' : '';
                                     ?>
-                                        <option value="<?= $asal['id_asal'] ?>"><?= $asal['nama_asal'] ?></option>
+                                        <option value="<?= $asal['id_asal'] ?>" <?= $selected ?>><?= $asal['nama_asal'] ?></option>
                                     <?php
                                     }
                                     ?>
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" name="proses" value="simpan" class="btn btn-md text-white col-12 mt-3" style="background-color: #5cb874;">Submit</button>
+                        <button type="submit" name="proses" value="ubah" class="btn btn-warning btn-md text-white col-12 mt-3">Ubah</button>
+                        <input type="hidden" name="idx" value="<?= $idedit ?>">
                     </div>
                 </form>
             </div>
