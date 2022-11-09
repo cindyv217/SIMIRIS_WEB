@@ -22,11 +22,12 @@ include_once 'layouts/head.php';
 <body>
 
   <?php
+  error_reporting(0);
   include_once 'layouts/nav.php';
   ?>
   <main id="main">
     <?php
-    // error_reporting(0);
+    error_reporting(0);
     $hal = $_REQUEST['hal'];
     if (!empty($hal)) {
       include_once $hal . '.php';
